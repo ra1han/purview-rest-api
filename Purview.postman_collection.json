@@ -51,7 +51,7 @@
 						},
 						{
 							"key": "resource",
-							"value": "{{resource}}",
+							"value": "https://purview.azure.net",
 							"type": "text"
 						}
 					]
@@ -74,7 +74,7 @@
 			"response": []
 		},
 		{
-			"name": "get_typedefs",
+			"name": "get typedefs",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -104,6 +104,177 @@
 						"v2",
 						"types",
 						"typedefs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get azure sql server entity",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{purview_account}}.catalog.purview.azure.com/api/atlas/v2/entity/bulk?guid=52bd8bd1-1ca4-4500-ab45-f5d7dc0dbd27&ignoreRelationships=true",
+					"protocol": "https",
+					"host": [
+						"{{purview_account}}",
+						"catalog",
+						"purview",
+						"azure",
+						"com"
+					],
+					"path": [
+						"api",
+						"atlas",
+						"v2",
+						"entity",
+						"bulk"
+					],
+					"query": [
+						{
+							"key": "guid",
+							"value": "52bd8bd1-1ca4-4500-ab45-f5d7dc0dbd27"
+						},
+						{
+							"key": "ignoreRelationships",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create mongodb type def",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"entityDefs\": [\r\n        {\r\n            \"category\": \"ENTITY\",           \r\n            \"version\": 1,\r\n            \"name\": \"mongodb\",\r\n            \"description\": \"mongo database\",\r\n            \"typeVersion\": \"1.0\",\r\n            \"attributeDefs\": [\r\n            ],\r\n            \"superTypes\": [\r\n                \"DataSet\"\r\n            ],\r\n            \"subTypes\": [],\r\n            \"relationshipAttributeDefs\": [\r\n\r\n            ]\r\n        }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{purview_account}}.catalog.purview.azure.com/api/atlas/v2/types/typedefs",
+					"protocol": "https",
+					"host": [
+						"{{purview_account}}",
+						"catalog",
+						"purview",
+						"azure",
+						"com"
+					],
+					"path": [
+						"api",
+						"atlas",
+						"v2",
+						"types",
+						"typedefs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create mongodb entity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"entity\": {\r\n    \"meanings\": [\r\n    ],\r\n    \"status\": \"ACTIVE\",\r\n    \"version\": 0,\r\n    \"typeName\": \"mongodb\",\r\n    \"attributes\": {\r\n        \"qualifiedName\": \"mongodb://mongo/customer\",\r\n        \"name\": \"customer\",\r\n        \"description\": \"dummy description\",\r\n        \"principalId\": 0,\r\n        \"objectType\": null\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{purview_account}}.catalog.purview.azure.com/api/atlas/v2/entity",
+					"protocol": "https",
+					"host": [
+						"{{purview_account}}",
+						"catalog",
+						"purview",
+						"azure",
+						"com"
+					],
+					"path": [
+						"api",
+						"atlas",
+						"v2",
+						"entity"
 					]
 				}
 			},
