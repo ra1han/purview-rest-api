@@ -279,6 +279,131 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "create demo entities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"entities\": [\r\n    {\r\n        \"meanings\": [\r\n        ],\r\n        \"status\": \"ACTIVE\",\r\n        \"version\": 0,\r\n        \"typeName\": \"DataSet\",\r\n        \"attributes\": {\r\n            \"qualifiedName\": \"demo://input_demo01\",\r\n            \"name\": \"input_demo01\",\r\n            \"description\": \"input_demo01\",\r\n            \"objectType\": null\r\n        }\r\n    },\r\n    {\r\n        \"meanings\": [\r\n        ],\r\n        \"status\": \"ACTIVE\",\r\n        \"version\": 0,\r\n        \"typeName\": \"DataSet\",\r\n        \"attributes\": {\r\n            \"qualifiedName\": \"demo://input_demo02\",\r\n            \"name\": \"input_demo02\",\r\n            \"description\": \"input_demo02\",\r\n            \"objectType\": null\r\n        }\r\n    },\r\n    {\r\n        \"meanings\": [\r\n        ],\r\n        \"status\": \"ACTIVE\",\r\n        \"version\": 0,\r\n        \"typeName\": \"DataSet\",\r\n        \"attributes\": {\r\n            \"qualifiedName\": \"demo://output_demo01\",\r\n            \"name\": \"output_demo01\",\r\n            \"description\": \"output_demo01\",\r\n            \"objectType\": null\r\n        }\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{purview_account}}.catalog.purview.azure.com/api/atlas/v2/entity/bulk",
+					"protocol": "https",
+					"host": [
+						"{{purview_account}}",
+						"catalog",
+						"purview",
+						"azure",
+						"com"
+					],
+					"path": [
+						"api",
+						"atlas",
+						"v2",
+						"entity",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create demo lineage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"entity\": {\r\n    \"status\": \"ACTIVE\",\r\n    \"version\": 0,\r\n    \"typeName\": \"Process\",\r\n    \"attributes\": {\r\n        \"inputs\": [\r\n            {\"guid\": \"b430c048-0452-4073-9ef7-cafa028f9c38\"},\r\n            {\"guid\": \"9585886a-efec-46dd-850b-88d79119aff7\"}\r\n        ],\r\n        \"outputs\": [\r\n            {\"guid\": \"8019eb98-8841-4a1f-a9ee-d17c8f5abade\"}\r\n        ],\r\n        \"qualifiedName\": \"apacheatlas://customlineage01\",\r\n        \"name\": \"customlineage01\"\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{purview_account}}.catalog.purview.azure.com/api/atlas/v2/entity",
+					"protocol": "https",
+					"host": [
+						"{{purview_account}}",
+						"catalog",
+						"purview",
+						"azure",
+						"com"
+					],
+					"path": [
+						"api",
+						"atlas",
+						"v2",
+						"entity"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
