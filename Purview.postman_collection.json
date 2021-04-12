@@ -125,7 +125,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://{{purview_account}}.catalog.purview.azure.com/api/atlas/v2/entity/bulk?guid=52bd8bd1-1ca4-4500-ab45-f5d7dc0dbd27&ignoreRelationships=true",
+					"raw": "https://{{purview_account}}.catalog.purview.azure.com/api/atlas/v2/entity/bulk?guid=52bd8bd1-1ca4-4500-ab45-f5d7dc0dbd27&ignoreRelationships=false",
 					"protocol": "https",
 					"host": [
 						"{{purview_account}}",
@@ -148,7 +148,7 @@
 						},
 						{
 							"key": "ignoreRelationships",
-							"value": "true"
+							"value": "false"
 						}
 					]
 				}
@@ -400,6 +400,43 @@
 						"atlas",
 						"v2",
 						"entity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get azure sql server to db relation",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{purview_account}}.catalog.purview.azure.com/api/atlas/v2/relationship/guid/3dafaae5-f1cd-4327-b9c5-29e3a0169c47",
+					"protocol": "https",
+					"host": [
+						"{{purview_account}}",
+						"catalog",
+						"purview",
+						"azure",
+						"com"
+					],
+					"path": [
+						"api",
+						"atlas",
+						"v2",
+						"relationship",
+						"guid",
+						"3dafaae5-f1cd-4327-b9c5-29e3a0169c47"
 					]
 				}
 			},
